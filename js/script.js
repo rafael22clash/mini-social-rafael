@@ -54,7 +54,7 @@ function clicarcurtir(){
 }
 
 function clicardescurtir(){
-  curtir;
+  descurtir;
 }
 // === EVENTOS ===
 document.getElementById("likeBtn").addEventListener("click", clicarcurtir);
