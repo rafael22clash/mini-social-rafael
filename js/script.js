@@ -3,6 +3,8 @@ let dislikeCount = 0;
 let curtido = false;
 let descurtido = false;
 
+
+// === SERVICE ( regras de negocio) 
 function curtir() {
   if (curtido == false){
     likeCount++;
@@ -44,7 +46,16 @@ function descurtir() {
   }
 }
 
+//=== CONTROLLER intermediaçao evento/regra de negocio 
 
 
-document.getElementById("likeBtn").addEventListener("click", curtir);
-document.getElementById("dislikeBtn").addEventListener("click", descurtir);
+function clicarcurtir(){
+  curtir;
+}
+
+function clicardescurtir(){
+  curtir;
+}
+// === EVENTOS ===
+document.getElementById("likeBtn").addEventListener("click", clicarcurtir);
+document.getElementById("dislikeBtn").addEventListener("click", clicardescurtir);
