@@ -9,19 +9,19 @@ function curtir() {
   if (curtido == false){
     likeCount++;
     curtido = true;
-    document.getElementById("likeCount").innerText = likeCount;
+    
 
     if(descurtido == true){
       dislikeCount--;
       descurtido = false;
-      document.getElementById("dislikeCount").innerText = dislikeCount;
+    
 
     }
 
   }else{
     likeCount--;
     curtido = false;
-    document.getElementById("likeCount").innerText = likeCount;
+    
   }
 
 }
@@ -30,20 +30,26 @@ function descurtir() {
   if(descurtido == false){
     dislikeCount++;
     descurtido = true;
-    document.getElementById("dislikeCount").innerText = dislikeCount;
+    
 
     if(curtido == true){
       likeCount--;
       curtido = false;
-      document.getElementById("likeCount").innerText = likeCount;
+      
     }
 
   }
   else{
     dislikeCount--;
     descurtido = false;
-    document.getElementById("dislikeCount").innerText = dislikeCount;
+    
   }
+}
+
+// VIEWS (interface)===
+function atualizarTela(){
+  document.getElementById("likeCount").innerText = likeCount;
+  document.getElementById("dislikeCount").innerText = dislikeCount;
 }
 
 //=== CONTROLLER intermediaçao evento/regra de negocio 
@@ -51,11 +57,17 @@ function descurtir() {
 
 function clicarcurtir(){
   curtir;
+  atualizarTela();
 }
 
 function clicardescurtir(){
   descurtir;
+  atualizarTela();
 }
 // === EVENTOS ===
 document.getElementById("likeBtn").addEventListener("click", clicarcurtir);
 document.getElementById("dislikeBtn").addEventListener("click", clicardescurtir);
+
+// == INICIALIZAÇÃO DE TELA ===
+
+atualizarTela();
