@@ -1,62 +1,80 @@
-// === ESTADO (dados da aplicação) === 
-let likeCount = 0;
-let dislikeCount = 0;
-let curtido = false;
-let descurtido = false;
+// === "BANCO DE DADOS (JSON Simulado)" === 
+
+let post ={
+  likeCount: 0,
+  dislikeCount: 0,
+  curtido: false,
+  descurtido: false
+}
+
 
 // === SERVICE (regras de negócio)
 function curtir() {
-  if (curtido == false){
-    likeCount++;
-    curtido = true;
+  if (post.curtido == false){
+    post.likeCount++;
+    post.curtido = true;
     
 
-    if(descurtido == true){
-      dislikeCount--;
-      descurtido = false;
+    if(post.descurtido == true){
+      post.dislikeCount--;
+      post.descurtido = false;
     }
 
   }else{
-    likeCount--;
-    curtido = false;
+    post.likeCount--;
+    post.curtido = false;
   }
 
 }
 
 function descurtir() {
-  if(descurtido == false){
-    dislikeCount++;
-    descurtido = true;
+  if(post.descurtido == false){
+    post.dislikeCount++;
+    post.descurtido = true;
     
 
-    if(curtido == true){
-      likeCount--;
-      curtido = false;
+    if(post.curtido == true){
+      post.likeCount--;
+      post.curtido = false;
     }
 
   }
   else{
-    dislikeCount--;
-    descurtido = false;
+    post.dislikeCount--;
+    post.descurtido = false;
   }
+}
+
+// === API SIMULADA ===
+
+function getPost(){
+  return post;
+}
+function likePost(){
+  curtir ();
+  return post;
+}
+function dislikePost(){
+  descurtir ();
+  return post;
 }
 
 //=== VIEWS (interface)===
 
-function atualizarTela(){
-  document.getElementById("likeCount").innerText = likeCount;
-  document.getElementById("dislikeCount").innerText = dislikeCount;
+function atualizarTela(dados){
+  document.getElementById("likeCount").innerText = dados.likeCount;
+  document.getElementById("dislikeCount").innerText = dados.dislikeCount;
 }
 
 //=== CONTROLLER (intermediação evento/regras de negócio)
 
 function clicarCurtir(){
-  curtir();
-  atualizarTela();
+  let dados = likepost();
+  atualizarTela(dados);
 }
 function clicarDescurtir(){
-  descurtir();
-  atualizarTela();
+  let dados = dislikepost();
+  atualizarTela(dados);
 }
 
 
@@ -66,4 +84,4 @@ document.getElementById("dislikeBtn").addEventListener("click", clicarDescurtir)
 
 // === INICIALIZAÇÃO DE TELA ===
 
-atualizarTela();
+atualizarTela(getPost());
