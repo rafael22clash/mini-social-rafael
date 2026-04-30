@@ -1,12 +1,11 @@
 // === "BANCO DE DADOS (JSON Simulado)" === 
 
-let post ={
+let post = {
   likeCount: 0,
   dislikeCount: 0,
   curtido: false,
   descurtido: false
 }
-
 
 // === SERVICE (regras de negócio)
 function curtir() {
@@ -45,15 +44,17 @@ function descurtir() {
   }
 }
 
-// === API SIMULADA ===
+//=== API SIMULADA === 
 
 function getPost(){
   return post;
 }
+
 function likePost(){
   curtir ();
   return post;
 }
+
 function dislikePost(){
   descurtir ();
   return post;
@@ -69,11 +70,11 @@ function atualizarTela(dados){
 //=== CONTROLLER (intermediação evento/regras de negócio)
 
 function clicarCurtir(){
-  let dados = likepost();
+  let dados = likePost();
   atualizarTela(dados);
 }
 function clicarDescurtir(){
-  let dados = dislikepost();
+  let dados = dislikePost();
   atualizarTela(dados);
 }
 
